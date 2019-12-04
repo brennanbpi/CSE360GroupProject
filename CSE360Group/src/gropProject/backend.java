@@ -21,7 +21,7 @@ public class backend
 	}
 	
 	//takes string filename to read in files from file
-	public void loadfile(String filename)
+	public void loadfile(String filename) throws IOException
 	{
 		allgrades.clear();	//Clears ArrayList for new set of data
 		File data = new File(filename);	//Creates File using name
