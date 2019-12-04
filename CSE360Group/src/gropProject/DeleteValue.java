@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class DeleteValue extends JFrame {
@@ -78,6 +81,13 @@ public class DeleteValue extends JFrame {
 		gbc_btnBack.gridx = 3;
 		gbc_btnBack.gridy = 6;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }

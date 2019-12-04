@@ -11,6 +11,9 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class ImportData extends JFrame {
@@ -98,6 +101,13 @@ public class ImportData extends JFrame {
 		gbc_btnBack.gridx = 2;
 		gbc_btnBack.gridy = 2;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }

@@ -7,13 +7,22 @@ import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+/**
+ * Main window for the program, links to other features with buttons,
+ * Majority built using Eclipse WindowBuilder plug in
+ * @author Albert De La Cruz
+ *
+ */
 public class WindowTest {
 
 	private JFrame frame;
 
 	/**
-	 * Launch the application.
+	 *  Launch the application.
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,74 +58,176 @@ public class WindowTest {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JButton btnNewButton = new JButton("Import Data");
+		
+		JButton importDataButton = new JButton("Import Data");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 3;
-		frame.getContentPane().add(btnNewButton, gbc_btnNewButton);
+		frame.getContentPane().add(importDataButton, gbc_btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Append data");
+		//changing the frame when button is pressed
+		importDataButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent arg0)
+					{
+						ImportData importDataFrame = new ImportData();
+						importDataFrame.setVisible(true);
+						importDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					}
+				
+				});
+		
+		JButton appendDataButton = new JButton("Append data");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 7;
 		gbc_btnNewButton_1.gridy = 3;
-		frame.getContentPane().add(btnNewButton_1, gbc_btnNewButton_1);
+		frame.getContentPane().add(appendDataButton, gbc_btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Delete value");
+		appendDataButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				appendDataSet appendDataFrame = new appendDataSet();
+				appendDataFrame.setVisible(true);
+				appendDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		
+		});
+		
+		JButton deleteValueButton = new JButton("Delete value");
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_2.gridx = 9;
 		gbc_btnNewButton_2.gridy = 3;
-		frame.getContentPane().add(btnNewButton_2, gbc_btnNewButton_2);
+		frame.getContentPane().add(deleteValueButton , gbc_btnNewButton_2);
+		deleteValueButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				DeleteValue DeleteValueFrame = new DeleteValue();
+				DeleteValueFrame.setVisible(true);
+				DeleteValueFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_3 = new JButton("Analyze Data");
+		});
+		
+		JButton analyzeDataButton = new JButton("Analyze Data");
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
 		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_3.gridx = 4;
 		gbc_btnNewButton_3.gridy = 6;
-		frame.getContentPane().add(btnNewButton_3, gbc_btnNewButton_3);
+		frame.getContentPane().add(analyzeDataButton , gbc_btnNewButton_3);
+		analyzeDataButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				AnalyzeData analyzeDataFrame = new AnalyzeData();
+				analyzeDataFrame.setVisible(true);
+				analyzeDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_4 = new JButton("Set Bounds");
+		});
+		
+		JButton setBoundsButton = new JButton("Set Bounds");
 		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
 		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_4.gridx = 7;
 		gbc_btnNewButton_4.gridy = 6;
-		frame.getContentPane().add(btnNewButton_4, gbc_btnNewButton_4);
+		frame.getContentPane().add(setBoundsButton, gbc_btnNewButton_4);
+		setBoundsButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				SetBoundries setBoundriesFrame = new SetBoundries();
+				setBoundriesFrame.setVisible(true);
+				setBoundriesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_5 = new JButton("Display Data");
+		});
+		
+		JButton displayDataButton = new JButton("Display Data");
 		GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
 		gbc_btnNewButton_5.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_5.gridx = 9;
 		gbc_btnNewButton_5.gridy = 6;
-		frame.getContentPane().add(btnNewButton_5, gbc_btnNewButton_5);
+		frame.getContentPane().add(displayDataButton, gbc_btnNewButton_5);
+		displayDataButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				DisplayData displayDataFrame = new DisplayData();
+				displayDataFrame.setVisible(true);
+				displayDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_6 = new JButton("Display Graph");
+		});
+		
+		JButton displayGraphButton = new JButton("Display Graph");
 		GridBagConstraints gbc_btnNewButton_6 = new GridBagConstraints();
 		gbc_btnNewButton_6.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_6.gridx = 4;
 		gbc_btnNewButton_6.gridy = 9;
-		frame.getContentPane().add(btnNewButton_6, gbc_btnNewButton_6);
+		frame.getContentPane().add(displayGraphButton , gbc_btnNewButton_6);
+		/*displayGraphButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				DisplayData displayDataFrame = new DisplayData();
+				displayDataFrame.setVisible(true);
+				displayDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_7 = new JButton("Errors");
+		}); need to finish graph window*/
+		
+		JButton errorsButton = new JButton("Errors");
 		GridBagConstraints gbc_btnNewButton_7 = new GridBagConstraints();
 		gbc_btnNewButton_7.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_7.gridx = 7;
 		gbc_btnNewButton_7.gridy = 9;
-		frame.getContentPane().add(btnNewButton_7, gbc_btnNewButton_7);
+		frame.getContentPane().add(errorsButton, gbc_btnNewButton_7);
+		errorsButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				ErrorWindow errorWindowFrame = new ErrorWindow();
+				errorWindowFrame.setVisible(true);
+				errorWindowFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_8 = new JButton("Create Report");
+		});
+		
+		JButton createReportButton = new JButton("Create Report");
 		GridBagConstraints gbc_btnNewButton_8 = new GridBagConstraints();
 		gbc_btnNewButton_8.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_8.gridx = 9;
 		gbc_btnNewButton_8.gridy = 9;
-		frame.getContentPane().add(btnNewButton_8, gbc_btnNewButton_8);
+		frame.getContentPane().add(createReportButton, gbc_btnNewButton_8);
+		createReportButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				ReportWindow reportWindowFrame = new ReportWindow();
+				reportWindowFrame.setVisible(true);
+				reportWindowFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		
-		JButton btnNewButton_9 = new JButton("Exit");
+		});
+		
+		
+		JButton exitButton = new JButton("Exit");
 		GridBagConstraints gbc_btnNewButton_9 = new GridBagConstraints();
 		gbc_btnNewButton_9.gridx = 9;
 		gbc_btnNewButton_9.gridy = 11;
-		frame.getContentPane().add(btnNewButton_9, gbc_btnNewButton_9);
+		frame.getContentPane().add(exitButton, gbc_btnNewButton_9);
+		exitButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				frame.dispose();//closes window
+			}
+		});
 	}
 
 }

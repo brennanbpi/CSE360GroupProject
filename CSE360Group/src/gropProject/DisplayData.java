@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextArea;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class DisplayData extends JFrame {
@@ -69,6 +72,13 @@ public class DisplayData extends JFrame {
 		gbc_btnBack.gridx = 3;
 		gbc_btnBack.gridy = 3;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }

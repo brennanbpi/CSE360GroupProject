@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class ReportWindow extends JFrame {
@@ -77,6 +80,13 @@ public class ReportWindow extends JFrame {
 		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 6;
 		contentPane.add(btnNewButton, gbc_btnNewButton);
+		btnNewButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }

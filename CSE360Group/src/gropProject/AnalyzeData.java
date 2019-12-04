@@ -9,6 +9,9 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class AnalyzeData extends JFrame {
@@ -143,6 +146,13 @@ public class AnalyzeData extends JFrame {
 		gbc_btnBack.gridx = 4;
 		gbc_btnBack.gridy = 8;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }
