@@ -9,6 +9,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+
+import javax.swing.JLabel;
 
 /**
  * Main window for the program, links to other features with buttons,
@@ -20,6 +25,7 @@ public class WindowTest {
 
 	private JFrame frame;
 	private backend backend;
+	private String fileString = "yo";
 
 	/**
 	 *  Launch the application.
@@ -60,6 +66,13 @@ public class WindowTest {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
+		JLabel lblCurrentFile = new JLabel("");
+		GridBagConstraints gbc_lblCurrentFile = new GridBagConstraints();
+		gbc_lblCurrentFile.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCurrentFile.gridx = 7;
+		gbc_lblCurrentFile.gridy = 1;
+		frame.getContentPane().add(lblCurrentFile, gbc_lblCurrentFile);
+		
 		
 		JButton importDataButton = new JButton("Import Data");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -75,9 +88,43 @@ public class WindowTest {
 					{
 						ImportData importDataFrame = new ImportData();
 						importDataFrame.setVisible(true);
+						//lblCurrentFile.setText("Current File: " + fileString);
 						importDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					}
-				
+						importDataFrame.addWindowListener(new WindowListener()
+								{
+									@Override
+									public void windowOpened(WindowEvent e) {
+										// TODO Auto-generated method stub
+										importDataFrame.setFileString(fileString);
+									}
+									@Override
+									public void windowClosing(WindowEvent e) {
+										fileString = importDataFrame.getFileString();
+										lblCurrentFile.setText("Current File: " + fileString);
+									}
+									@Override
+									public void windowClosed(WindowEvent e) {
+										// TODO Auto-generated method stub
+										fileString = importDataFrame.getFileString();
+										lblCurrentFile.setText("Current File: " + fileString);
+										try {
+											backend.loadfile(fileString);
+										}
+										catch(IOException error)
+										{
+											
+										}
+									}
+									@Override
+									public void windowIconified(WindowEvent e) {}
+									@Override
+									public void windowDeiconified(WindowEvent e) {}
+									@Override
+									public void windowActivated(WindowEvent e) {}
+									@Override
+									public void windowDeactivated(WindowEvent e) {}
+								});
+						}
 				});
 		
 		JButton appendDataButton = new JButton("Append data");
@@ -125,7 +172,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				AnalyzeData analyzeDataFrame = new AnalyzeData();
+				AnalyzeData analyzeDataFrame = new AnalyzeData(backend);
 				analyzeDataFrame.setVisible(true);
 				analyzeDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -142,7 +189,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				SetBoundries setBoundriesFrame = new SetBoundries();
+				SetBoundries setBoundriesFrame = new SetBoundries(backend);
 				setBoundriesFrame.setVisible(true);
 				setBoundriesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

@@ -23,6 +23,7 @@ public class SetBoundries extends JFrame {
 	private JLabel lblLowerBound;
 	private JButton btnSetBounds;
 	private JButton btnBack;
+	private backend backend;
 
 	/**
 	 * Launch the application.
@@ -31,7 +32,7 @@ public class SetBoundries extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SetBoundries frame = new SetBoundries();
+					SetBoundries frame = new SetBoundries(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +44,8 @@ public class SetBoundries extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SetBoundries() {
+	public SetBoundries(backend newBackend) {
+		backend = newBackend;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -105,6 +107,13 @@ public class SetBoundries extends JFrame {
 		gbc_btnSetBounds.gridx = 3;
 		gbc_btnSetBounds.gridy = 5;
 		contentPane.add(btnSetBounds, gbc_btnSetBounds);
+		btnSetBounds.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent arg0)//setting the upper and lower bounds
+					{
+						backend.setBounds(Integer.parseInt(textField.getText()), Integer.parseInt(textField_1.getText()));
+					}
+				});
 		
 		btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();

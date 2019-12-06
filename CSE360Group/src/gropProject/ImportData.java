@@ -20,6 +20,7 @@ public class ImportData extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private String fileString;
 
 	/**
 	 * Launch the application.
@@ -41,7 +42,9 @@ public class ImportData extends JFrame {
 	 * Create the frame.
 	 */
 	public ImportData() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fileString = "";
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 555, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,13 +65,13 @@ public class ImportData extends JFrame {
 		gbc_lblPleaseEnter.gridy = 0;
 		contentPane.add(lblPleaseEnter, gbc_lblPleaseEnter);
 		
-		JLabel label = new JLabel("");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.fill = GridBagConstraints.BOTH;
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 0;
-		contentPane.add(label, gbc_label);
+		JLabel lblHi = new JLabel("");
+		GridBagConstraints gbc_lblHi = new GridBagConstraints();
+		gbc_lblHi.fill = GridBagConstraints.VERTICAL;
+		gbc_lblHi.insets = new Insets(0, 0, 5, 5);
+		gbc_lblHi.gridx = 1;
+		gbc_lblHi.gridy = 0;
+		contentPane.add(lblHi, gbc_lblHi);
 		
 		JLabel lblNewLabel = new JLabel("File Name: ");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -95,6 +98,17 @@ public class ImportData extends JFrame {
 		gbc_btnImport.gridx = 2;
 		gbc_btnImport.gridy = 1;
 		contentPane.add(btnImport, gbc_btnImport);
+		//getting the file name from the text box
+		btnImport.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent arg0)
+					{
+						fileString = textField.getText();//sets fileString to the text
+						lblHi.setText("Current File: " + fileString);
+					}
+				});
+			
+		
 		
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -105,9 +119,20 @@ public class ImportData extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
+				//setVisible(false);
 				dispose();//closes window
+				
 			}
 		});
 	}
-
+	
+	public String getFileString()
+	{
+		return fileString;
+	}
+	
+	public void setFileString(String inputString)
+	{
+		fileString = inputString;
+	}
 }

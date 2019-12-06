@@ -17,6 +17,7 @@ import javax.swing.JButton;
 public class AnalyzeData extends JFrame {
 
 	private JPanel contentPane;
+	private backend backend;
 
 	/**
 	 * Launch the application.
@@ -25,7 +26,7 @@ public class AnalyzeData extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AnalyzeData frame = new AnalyzeData();
+					AnalyzeData frame = new AnalyzeData(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +38,8 @@ public class AnalyzeData extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AnalyzeData() {
+	public AnalyzeData(backend newBackend) {
+		backend = newBackend;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -64,7 +66,8 @@ public class AnalyzeData extends JFrame {
 		gbc_lblNewLabel.gridy = 2;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JLabel lblentries = new JLabel("#entries");
+		String entries = Integer.toString(backend.getNumofEntries());
+		JLabel lblentries = new JLabel(entries);
 		GridBagConstraints gbc_lblentries = new GridBagConstraints();
 		gbc_lblentries.insets = new Insets(0, 0, 5, 5);
 		gbc_lblentries.gridx = 3;
@@ -78,12 +81,14 @@ public class AnalyzeData extends JFrame {
 		gbc_lblHigh.gridy = 3;
 		contentPane.add(lblHigh, gbc_lblHigh);
 		
-		JLabel lblHigh_1 = new JLabel("High#");
+		String high = Float.toString(backend.getHigh());
+		JLabel lblHigh_1 = new JLabel(high);
 		GridBagConstraints gbc_lblHigh_1 = new GridBagConstraints();
 		gbc_lblHigh_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblHigh_1.gridx = 3;
 		gbc_lblHigh_1.gridy = 3;
 		contentPane.add(lblHigh_1, gbc_lblHigh_1);
+		
 		
 		JLabel lblLow = new JLabel("Low");
 		GridBagConstraints gbc_lblLow = new GridBagConstraints();
@@ -92,7 +97,8 @@ public class AnalyzeData extends JFrame {
 		gbc_lblLow.gridy = 4;
 		contentPane.add(lblLow, gbc_lblLow);
 		
-		JLabel lblLow_1 = new JLabel("Low#");
+		String low = Float.toString(backend.getLow());
+		JLabel lblLow_1 = new JLabel(low);
 		GridBagConstraints gbc_lblLow_1 = new GridBagConstraints();
 		gbc_lblLow_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLow_1.gridx = 3;
@@ -106,7 +112,8 @@ public class AnalyzeData extends JFrame {
 		gbc_lblMean.gridy = 5;
 		contentPane.add(lblMean, gbc_lblMean);
 		
-		JLabel lblMean_1 = new JLabel("Mean#");
+		String mean = Float.toString(backend.getMean());
+		JLabel lblMean_1 = new JLabel(mean);
 		GridBagConstraints gbc_lblMean_1 = new GridBagConstraints();
 		gbc_lblMean_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMean_1.gridx = 3;
@@ -120,7 +127,8 @@ public class AnalyzeData extends JFrame {
 		gbc_lblMedian.gridy = 6;
 		contentPane.add(lblMedian, gbc_lblMedian);
 		
-		JLabel lblMedian_1 = new JLabel("Median#");
+		String median = Float.toString(backend.getMedian());
+		JLabel lblMedian_1 = new JLabel(median);
 		GridBagConstraints gbc_lblMedian_1 = new GridBagConstraints();
 		gbc_lblMedian_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMedian_1.gridx = 3;
@@ -134,7 +142,8 @@ public class AnalyzeData extends JFrame {
 		gbc_lblMode.gridy = 7;
 		contentPane.add(lblMode, gbc_lblMode);
 		
-		JLabel lblMode_1 = new JLabel("Mode#");
+		String mode = Float.toString(backend.getMode());
+		JLabel lblMode_1 = new JLabel(mode);
 		GridBagConstraints gbc_lblMode_1 = new GridBagConstraints();
 		gbc_lblMode_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMode_1.gridx = 3;
