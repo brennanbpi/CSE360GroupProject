@@ -73,6 +73,14 @@ public class ReportWindow extends JFrame {
 		gbc_btnCreateReport.gridx = 3;
 		gbc_btnCreateReport.gridy = 4;
 		contentPane.add(btnCreateReport, gbc_btnCreateReport);
+		btnCreateReport.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
+		
 		
 		JButton btnNewButton = new JButton("Back");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();

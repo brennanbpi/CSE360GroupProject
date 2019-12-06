@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 public class WindowTest {
 
 	private JFrame frame;
+	private backend backend;
 
 	/**
 	 *  Launch the application.
@@ -41,6 +42,7 @@ public class WindowTest {
 	 * Create the application.
 	 */
 	public WindowTest() {
+		backend = new backend(0, 100);
 		initialize();
 	}
 
@@ -89,7 +91,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				appendDataSet appendDataFrame = new appendDataSet();
+				appendDataSet appendDataFrame = new appendDataSet(backend);
 				appendDataFrame.setVisible(true);
 				appendDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -106,7 +108,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				DeleteValue DeleteValueFrame = new DeleteValue();
+				DeleteValue DeleteValueFrame = new DeleteValue(backend);
 				DeleteValueFrame.setVisible(true);
 				DeleteValueFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

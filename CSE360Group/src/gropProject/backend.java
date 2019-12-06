@@ -1,7 +1,10 @@
 package gropProject;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class backend
 {
@@ -27,7 +30,7 @@ public class backend
 		File data = new File(filename);	//Creates File using name
 		if(data.isFile())	//Ensures that, there is a file using the name
 		{
-			BufferedReader br = new BufferedReader(data);
+			BufferedReader br = new BufferedReader(new FileReader(data));
 			String str;
 			if(filename.endsWith(".txt"))	//Checks if file is .txt...
 			{
@@ -122,7 +125,7 @@ public class backend
 	{
 		int i, occur = 0;
 		float num, absoccur = 0, mode = 0;
-		ArrayList<Float> temp = allgrades.clone();//Clones allgrades to not intefere with original data
+		ArrayList<Float> temp = (ArrayList<Float>) allgrades.clone();//Clones allgrades to not intefere with original data
 		while(temp.size() != 0)
 		{
 			num = temp.get(0);	//Gets the float of the first index; will be different because original 1 gets removed.

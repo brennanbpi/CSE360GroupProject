@@ -19,7 +19,7 @@ public class DeleteValue extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-
+	private backend backend;
 	/**
 	 * Launch the application.
 	 */
@@ -27,7 +27,7 @@ public class DeleteValue extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DeleteValue frame = new DeleteValue();
+					DeleteValue frame = new DeleteValue(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,8 @@ public class DeleteValue extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DeleteValue() {
+	public DeleteValue(backend backend) {
+		this.backend = backend;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -73,6 +74,13 @@ public class DeleteValue extends JFrame {
 		gbc_btnDelete.gridx = 3;
 		gbc_btnDelete.gridy = 4;
 		contentPane.add(btnDelete, gbc_btnDelete);
+		btnDelete.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				backend.deleteValue(Float.parseFloat(textField.getText()));
+			}
+		});
 		
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();

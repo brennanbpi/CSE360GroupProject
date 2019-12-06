@@ -19,7 +19,8 @@ public class appendDataSet extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-
+	private backend backend;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -27,7 +28,7 @@ public class appendDataSet extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					appendDataSet frame = new appendDataSet();
+					appendDataSet frame = new appendDataSet(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +40,8 @@ public class appendDataSet extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public appendDataSet() {
+	public appendDataSet(backend backend) {
+		this.backend = backend;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -73,6 +75,13 @@ public class appendDataSet extends JFrame {
 		gbc_btnAppend.gridx = 3;
 		gbc_btnAppend.gridy = 5;
 		contentPane.add(btnAppend, gbc_btnAppend);
+		btnAppend.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				backend.append(Float.parseFloat(textField.getText()));//closes window
+			}
+		});
 		
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();

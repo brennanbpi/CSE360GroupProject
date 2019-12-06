@@ -140,6 +140,7 @@ public class AnalyzeData extends JFrame {
 		gbc_lblMode_1.gridx = 3;
 		gbc_lblMode_1.gridy = 7;
 		contentPane.add(lblMode_1, gbc_lblMode_1);
+	
 		
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
