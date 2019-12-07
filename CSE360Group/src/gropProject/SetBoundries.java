@@ -111,7 +111,7 @@ public class SetBoundries extends JFrame {
 				{
 					public void actionPerformed(ActionEvent arg0)//setting the upper and lower bounds
 					{
-						backend.setBounds(Integer.parseInt(textField.getText()), Integer.parseInt(textField_1.getText()));
+						backend.setBounds(Integer.parseInt(textField_1.getText()), Integer.parseInt(textField.getText()));
 					}
 				});
 		

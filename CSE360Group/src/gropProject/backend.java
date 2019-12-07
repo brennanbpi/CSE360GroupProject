@@ -64,11 +64,10 @@ public class backend
 	//adds value x to the arrayList
 	public void append(float addThis)
 	{
-		if(addThis >= l && addThis <= h)
+		if(addThis >= low && addThis <= high)
 		{
-			
-		allgrades.add(addThis);
-		log = log + addThis + " has been added to the data set\n";
+			allgrades.add(addThis);
+			log = log + addThis + " has been added to the data set\n";
 		}
 		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
 		log = log + "Error: " + addThis + "is not within the bounds\n";
@@ -94,12 +93,12 @@ public class backend
 	//reset the boundaries to given values
 	public void setBounds(int l, int h)
 	{
-		if(l<h)
+		if(l < h)
 		{		
-			low =l;
+			low = l;
 			high = h;
-			log= log+ "lower bounds has been set to " + l+"\n";
-			log= log+" upper bounds has been set to " +h +"\n";
+			log = log + "lower bounds has been set to " + l +"\n";
+			log = log +" upper bounds has been set to " + h +"\n";
 		}
 		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
