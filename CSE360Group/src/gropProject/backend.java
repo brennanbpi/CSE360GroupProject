@@ -11,13 +11,13 @@ public class backend
 	int low;//lowerbound
 	int high;//upperbound
 	String log;//to log events
-	string errorlog;//a log of errors
+	String errorlog;//a log of errors
 	ArrayList<Float> allgrades;
 	
 	//returns all grades added to display or use for graph
 	public ArrayList<Float> getgrades()
 	{
-		log = log+"Displaying grades/n";
+		log = log + "Displaying grades\n";
 		return allgrades;
 	}
 	
@@ -27,18 +27,18 @@ public class backend
 		low = l;//load in lowerbound
 		high = h;//load in upperbound
 		log = "";//begin log
-		errorlog="";
+		errorlog = "";
 		allgrades = new ArrayList<Float>();
 	}
 	
 	//takes string filename to read in files from file
 	public void loadfile(String filename) throws IOException
-	{
+	{	//Note that the filename can be full path
 		allgrades.clear();	//Clears ArrayList for new set of data
 		File data = new File(filename);	//Creates File using name
 		if(data.isFile())	//Ensures that, there is a file using the name
 		{
-			log = log + "inporting "+ filename+"/n";
+			log = log + "inporting " + filename + "\n";
 			BufferedReader br = new BufferedReader(new FileReader(data));
 			String str;
 			if(filename.endsWith(".txt"))	//Checks if file is .txt...
@@ -55,6 +55,7 @@ public class backend
 							allgrades.add(Float.parseFloat(temp[i]));	//... and adds them to ArrayList
 					}
 			}
+			br.close();
 		}
 		else	//If there is no file, prints error
 			System.out.println("Error: File Not Found.");
@@ -63,14 +64,14 @@ public class backend
 	//adds value x to the arrayList
 	public void append(float addThis)
 	{
-		if(addThis>=l&&addThis<=h)
+		if(addThis >= l && addThis <= h)
 		{
 			
 		allgrades.add(addThis);
-		log=log+ addThis+ " has been added to the data set/n";
+		log = log + addThis + " has been added to the data set\n";
 		}
-		errorlog=errorlog+"Error: "+addThis + "is not within the bounds/n";
-		log=log+"Error: "+addThis + "is not within the bounds/n";
+		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
+		log = log + "Error: " + addThis + "is not within the bounds\n";
 	}
 	
 	//deletes first appearance of a value from allgrades
@@ -86,21 +87,22 @@ public class backend
 				break;
 			}
 		}
-		errorlog= errorlog +"Error: "+ delThis + " is not in data set and can not be deleted\n";
-		log = log+"Error: "+ delThis + " is not in data set and can not be deleted\n";
+		errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
+		log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
 	}
 	
 	//reset the boundaries to given values
 	public void setBounds(int l, int h)
 	{
-		if (l<h)
-		{		low =l;
-		high=h;
-		log= log+ "lower bounds has been set to " + l+"/n";
-		log= log+" upper bounds has been set to " +h +"/n";
+		if(l<h)
+		{		
+			low =l;
+			high = h;
+			log= log+ "lower bounds has been set to " + l+"\n";
+			log= log+" upper bounds has been set to " +h +"\n";
 		}
-		errorlog= errorlog+ "Error:" +l +" is greater than "+ h+" , the boundaries will not be changed/n"; 
-		log+log+ "Error:" +l +" is greater than "+ h+" , the boundaries will not be changed/n"; 
+		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 	}
 	
 	//return number of entries in dataset
@@ -115,8 +117,8 @@ public class backend
 		float sum = 0;
 		for(int i = 0; i < allgrades.size(); i++)
 			sum += allgrades.get(i);
-		log=log+ "the mean of the dataset it "+ sum/allgrades.size() + "/n";
-				return sum/allgrades.size();
+		log = log + "the mean of the dataset it " + sum/allgrades.size() + "\n";
+		return sum/allgrades.size();
 	}
 	
 	//returns high of data set
@@ -126,7 +128,7 @@ public class backend
 		for(int i = 0; i < allgrades.size(); i++)
 			if(max < allgrades.get(i))
 				max = allgrades.get(i);
-		log=log+ "the high of the dataset is " +max+"/n";
+		log = log + "the high of the dataset is " + max + "\n";
 		return max;
 	}
 
@@ -137,17 +139,17 @@ public class backend
 		for(int i = 0; i < allgrades.size(); i++)
 			if(low > allgrades.get(i))
 				low = allgrades.get(i);
-		log=log+"the low of the dataset is "+ low+"/n";
+		log = log + "the low of the dataset is " + low + "\n";
 		return low;
 	}
 	
 	//returns median of data set
 	public float getMedian()
 	{
-		float median;
+		int median;	//This is the index(int) of the value that is the median(float)
 		median = ((int)(allgrades.size()/2 + 0.5 - 1));	//Will take ceiling. Ex: 3/2 = 1.5 + 0.5 = 2 ; 4/2 = 2 + 0.5 = 2 becuase int drops .05
-		log=log+"the median of the dataset is" + median+"/n";
-		return allgrades.get(median);
+		log = log + "the median of the dataset is" + median + "\n";
+		return allgrades.get(median);	//Returns the value at median index
 	}
 	
 	//returns mode of data sets
@@ -171,7 +173,7 @@ public class backend
 			}
 			occur = 0;	//Resets occurences
 		}
-		log = log + "the mode of the dataset is "+mode+"/n";
+		log = log + "the mode of the dataset is " + mode + "\n";
 		return mode;	//Returns value with highest occurences
 	}
 	
