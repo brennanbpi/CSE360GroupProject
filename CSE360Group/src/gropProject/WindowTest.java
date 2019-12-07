@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 
 /**
  * Main window for the program, links to other features with buttons,
+ * and keeps track by using the back end class
  * Majority built using Eclipse WindowBuilder plug in
  * @author Albert De La Cruz
  *
@@ -240,7 +241,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				ErrorWindow errorWindowFrame = new ErrorWindow();
+				ErrorWindow errorWindowFrame = new ErrorWindow(backend);
 				errorWindowFrame.setVisible(true);
 				errorWindowFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

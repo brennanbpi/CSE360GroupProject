@@ -39,7 +39,7 @@ public class backend
 		File data = new File(filename);	//Creates File using name
 		if(data.isFile())	//Ensures that, there is a file using the name
 		{
-			log = log + "inporting " + filename + "\n";
+			log = log + "importing " + filename + "\n";
 			BufferedReader br = new BufferedReader(new FileReader(data));
 			String str;
 			if(filename.endsWith(".txt"))	//Checks if file is .txt...
@@ -59,7 +59,10 @@ public class backend
 			br.close();
 		}
 		else	//If there is no file, prints error
+		{
 			System.out.println("Error: File Not Found.");
+			errorlog = errorlog + "Error: " + filename + " not found.\n";
+		}
 	}
 	
 	//adds value x to the arrayList
@@ -70,25 +73,32 @@ public class backend
 			allgrades.add(addThis);
 			log = log + addThis + " has been added to the data set\n";
 		}
-		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
-		log = log + "Error: " + addThis + "is not within the bounds\n";
+		else
+		{
+			errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
+			log = log + "Error: " + addThis + "is not within the bounds\n";
+		}
 	}
 	
 	//deletes first appearance of a value from allgrades
 	public void deleteValue(float delThis)
 	{
-		
+		boolean didntFindValue = true;
 		for(int trav=0; trav<=allgrades.size()-1; trav++)
 		{
 			if(allgrades.get(trav)==delThis)
 			{
 				allgrades.remove(trav);
 				log=log+delThis+" has been deleted from the data set";
+				didntFindValue = false;
 				break;
 			}
 		}
-		errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
-		log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
+		if(didntFindValue)
+		{
+			errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
+			log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
+		}
 	}
 	
 	//reset the boundaries to given values
@@ -101,7 +111,10 @@ public class backend
 			log = log + "lower bounds has been set to " + l +"\n";
 			log = log +" upper bounds has been set to " + h +"\n";
 		}
-		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		else
+		{//return an error
+			errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		}
 		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 	}
 	
@@ -178,12 +191,12 @@ public class backend
 	}
 	
 	//returns log of events
-	public string getlog()
+	public String getlog()
 	{
 		return log;
 	}
 	//return log of errors
-	public string geterrors()
+	public String geterrors()
 	{
 		return errorlog;
 	}
