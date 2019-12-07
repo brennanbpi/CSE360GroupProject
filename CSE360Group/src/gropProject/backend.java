@@ -11,9 +11,15 @@ public class backend
 	int low;//lowerbound
 	int high;//upperbound
 	String log;//to log events
-	string errorlog;
+	string errorlog;//a log of errors
 	ArrayList<Float> allgrades;
 	
+	//returns all grades added to display or use for graph
+	public ArrayList<Float> getgrades()
+	{
+		log = log+"Displaying grades/n";
+		return allgrades;
+	}
 	
 	//Constructor that takes in a lower and upper 
 	public backend(int l, int h)
