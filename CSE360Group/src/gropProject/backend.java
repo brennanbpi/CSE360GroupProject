@@ -61,7 +61,10 @@ public class backend
 			br.close();
 		}
 		else	//If there is no file, prints error
+		{
 			System.out.println("Error: File Not Found.");
+			errorlog = errorlog + "Error: " +  filename + " Not Found.";
+		}
 	}
 	
 	//adds value x to the arrayList
@@ -72,25 +75,32 @@ public class backend
 			allgrades.add(addThis);
 			log = log + addThis + " has been added to the data set\n";
 		}
-		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
-		log = log + "Error: " + addThis + "is not within the bounds\n";
+		else
+		{
+			errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
+			log = log + "Error: " + addThis + "is not within the bounds\n";
+		}
 	}
 	
 	//deletes first appearance of a value from allgrades
 	public void deleteValue(float delThis)
 	{
-		
+		boolean foundValue = false;
 		for(int trav=0; trav<=allgrades.size()-1; trav++)
 		{
 			if(allgrades.get(trav)==delThis)
 			{
+				foundValue = true;
 				allgrades.remove(trav);
 				log=log+delThis+" has been deleted from the data set";
 				break;
 			}
 		}
-		errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
-		log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
+		if(foundValue == false)//value not found
+		{
+			errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
+			log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
+		}
 	}
 	
 	//reset the boundaries to given values
@@ -103,8 +113,11 @@ public class backend
 			log = log + "lower bounds has been set to " + l +"\n";
 			log = log +" upper bounds has been set to " + h +"\n";
 		}
-		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
-		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		else
+		{
+			errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+			log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		}
 	}
 	
 	//return number of entries in dataset
