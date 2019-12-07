@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.bufferedWriter;
 
 public class backend
 {
@@ -186,4 +187,22 @@ public class backend
 	{
 		return errorlog;
 	}
+
+	//creates report, requires filename 
+	public void createReport(String filename)
+	{
+		if(filename.contains(.txt))//if filename does have .txt open file
+		{
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename));
+		}	
+		else//else add .txt to filename then open it
+		{
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename+".txt"));
+		}
+		writer.write(log);
+		writer.close();
+	}
+	
+	
 }
+
