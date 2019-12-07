@@ -14,6 +14,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * This class takes the back end data from the windowTest class 
+ * and the back end class and displays data for the current data set
+ */
 public class AnalyzeData extends JFrame {
 
 	private JPanel contentPane;

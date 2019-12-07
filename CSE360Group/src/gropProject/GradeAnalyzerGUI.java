@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+///currently not working
 public class GradeAnalyzerGUI {
 
 	private JFrame frame;

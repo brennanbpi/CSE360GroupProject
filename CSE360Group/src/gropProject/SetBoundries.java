@@ -15,6 +15,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * This class takes user input for upper and lower bounds for the back end class
+ * @author 
+ *
+ */
 public class SetBoundries extends JFrame {
 
 	private JPanel contentPane;

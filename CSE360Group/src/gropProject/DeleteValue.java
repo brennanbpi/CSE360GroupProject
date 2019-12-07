@@ -14,7 +14,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author 
+ *
+ */
 public class DeleteValue extends JFrame {
 
 	private JPanel contentPane;
