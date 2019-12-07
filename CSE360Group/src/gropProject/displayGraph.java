@@ -10,6 +10,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  * 
  * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
@@ -66,6 +68,13 @@ public class displayGraph extends JFrame {
 		gbc_btnBack.gridx = 10;
 		gbc_btnBack.gridy = 6;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				dispose();//closes window
+			}
+		});
 	}
 
 }
