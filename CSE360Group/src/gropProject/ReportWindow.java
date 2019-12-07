@@ -15,10 +15,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * 
+ * @author Albert De La Cruz
+ *
+ */
 public class ReportWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private backend backend;
 
 	/**
 	 * Launch the application.
@@ -27,7 +33,7 @@ public class ReportWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReportWindow frame = new ReportWindow();
+					ReportWindow frame = new ReportWindow(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +45,8 @@ public class ReportWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReportWindow() {
+	public ReportWindow(backend newBackend) {
+		backend = newBackend;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -77,7 +84,7 @@ public class ReportWindow extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				dispose();//closes window
+				backend.createReport(textField.getText());
 			}
 		});
 		

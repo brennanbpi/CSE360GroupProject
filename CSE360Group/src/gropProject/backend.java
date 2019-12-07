@@ -63,7 +63,7 @@ public class backend
 		else	//If there is no file, prints error
 		{
 			System.out.println("Error: File Not Found.");
-			errorlog = errorlog + "Error: " +  filename + " Not Found.";
+			errorlog = errorlog + "Error: " +  filename + " Not Found.\n";
 		}
 	}
 	
@@ -92,7 +92,7 @@ public class backend
 			{
 				foundValue = true;
 				allgrades.remove(trav);
-				log=log+delThis+" has been deleted from the data set";
+				log=log+delThis+" has been deleted from the data set\n";
 				break;
 			}
 		}

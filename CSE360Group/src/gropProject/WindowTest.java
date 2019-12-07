@@ -258,7 +258,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				ReportWindow reportWindowFrame = new ReportWindow();
+				ReportWindow reportWindowFrame = new ReportWindow(backend);
 				reportWindowFrame.setVisible(true);
 				reportWindowFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
