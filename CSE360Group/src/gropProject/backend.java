@@ -39,7 +39,7 @@ public class backend
 		File data = new File(filename);	//Creates File using name
 		if(data.isFile())	//Ensures that, there is a file using the name
 		{
-			log = log + "importing " + filename + "\n";
+			log = log + "inporting " + filename + "\n";
 			BufferedReader br = new BufferedReader(new FileReader(data));
 			String str;
 			if(filename.endsWith(".txt"))	//Checks if file is .txt...
@@ -59,10 +59,7 @@ public class backend
 			br.close();
 		}
 		else	//If there is no file, prints error
-		{
 			System.out.println("Error: File Not Found.");
-			errorlog = errorlog + "Error: " + filename + " not found.\n";
-		}
 	}
 	
 	//adds value x to the arrayList
@@ -73,32 +70,25 @@ public class backend
 			allgrades.add(addThis);
 			log = log + addThis + " has been added to the data set\n";
 		}
-		else
-		{
-			errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
-			log = log + "Error: " + addThis + "is not within the bounds\n";
-		}
+		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
+		log = log + "Error: " + addThis + "is not within the bounds\n";
 	}
 	
 	//deletes first appearance of a value from allgrades
 	public void deleteValue(float delThis)
 	{
-		boolean didntFindValue = true;
+		
 		for(int trav=0; trav<=allgrades.size()-1; trav++)
 		{
 			if(allgrades.get(trav)==delThis)
 			{
 				allgrades.remove(trav);
 				log=log+delThis+" has been deleted from the data set";
-				didntFindValue = false;
 				break;
 			}
 		}
-		if(didntFindValue)
-		{
-			errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
-			log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
-		}
+		errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
+		log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
 	}
 	
 	//reset the boundaries to given values
@@ -111,10 +101,7 @@ public class backend
 			log = log + "lower bounds has been set to " + l +"\n";
 			log = log +" upper bounds has been set to " + h +"\n";
 		}
-		else
-		{//return an error
-			errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
-		}
+		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 	}
 	
@@ -191,29 +178,49 @@ public class backend
 	}
 	
 	//returns log of events
-	public String getlog()
+	public string getlog()
 	{
 		return log;
 	}
 	//return log of errors
-	public String geterrors()
+	public string geterrors()
 	{
 		return errorlog;
 	}
 
+	//returns number of grades between per*10% and per*10%+10%
+	public int persent(int per)
+	{
+		int numberhere=0;
+		float incr = (high-low)/10;
+		float lbound =low+(per*incr);
+		float hbound=low+((per+1)*incr);
+		
+		for(int i=0; i<allgrades.size();i++)
+		{
+			if(allgrades.get(i)>= lbound&&allgrades.get(i)<hbound)
+			{
+				numberhere++;
+			}
+		}
+		return numberhere;
+	}
+	
 	//creates report, requires filename 
 	public void createReport(String filename)
 	{
-		if(filename.contains(".txt"))//if filename does have .txt open file
+		if(filename.contains(.txt))//if filename does have .txt open file
 		{
 			BufferedWriter writer = new BufferedWriter( new FileWriter(filename));
 		}	
 		else//else add .txt to filename then open it
 		{
-			BufferedWriter writer = new BufferedWriter( new FileWriter(filename + ".txt"));
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename+".txt"));
 		}
 		writer.write(log);
 		writer.close();
 	}
+	
+	
 }
 
