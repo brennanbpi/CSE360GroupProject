@@ -191,18 +191,16 @@ public class backend
 	//creates report, requires filename 
 	public void createReport(String filename)
 	{
-		if(filename.contains(.txt))//if filename does have .txt open file
+		if(filename.contains(".txt"))//if filename does have .txt open file
 		{
 			BufferedWriter writer = new BufferedWriter( new FileWriter(filename));
 		}	
 		else//else add .txt to filename then open it
 		{
-			BufferedWriter writer = new BufferedWriter( new FileWriter(filename+".txt"));
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename + ".txt"));
 		}
 		writer.write(log);
 		writer.close();
 	}
-	
-	
 }
 
