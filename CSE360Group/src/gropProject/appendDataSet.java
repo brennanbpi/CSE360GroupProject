@@ -14,7 +14,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+ *
+ */
 public class appendDataSet extends JFrame {
 
 	private JPanel contentPane;

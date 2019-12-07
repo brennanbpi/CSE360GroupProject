@@ -19,7 +19,8 @@ import javax.swing.JLabel;
  * Main window for the program, links to other features with buttons,
  * and keeps track by using the back end class
  * Majority built using Eclipse WindowBuilder plug in
- * @author Albert De La Cruz
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+
  *
  */
 public class WindowTest {

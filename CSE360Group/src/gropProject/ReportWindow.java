@@ -17,7 +17,7 @@ import javax.swing.JButton;
 
 /**
  * 
- * @author Albert De La Cruz
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
  *
  */
 public class ReportWindow extends JFrame {

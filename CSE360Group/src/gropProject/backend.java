@@ -8,7 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+ *
+ */
 public class backend
 {
 	int low;//lowerbound

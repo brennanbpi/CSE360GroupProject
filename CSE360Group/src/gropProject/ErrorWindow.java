@@ -18,6 +18,11 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**
+ * 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+ *
+ */
 public class ErrorWindow extends JFrame {
 
 	private JPanel contentPane;

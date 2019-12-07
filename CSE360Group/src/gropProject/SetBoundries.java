@@ -17,7 +17,7 @@ import javax.swing.JButton;
 
 /**
  * This class takes user input for upper and lower bounds for the back end class
- * @author 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
  *
  */
 public class SetBoundries extends JFrame {

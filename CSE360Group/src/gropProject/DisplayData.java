@@ -16,7 +16,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+ *
+ */
 public class DisplayData extends JFrame {
 
 	private JPanel contentPane;

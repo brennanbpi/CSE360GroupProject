@@ -10,7 +10,11 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-
+/**
+ * 
+ * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
+ *
+ */
 public class displayGraph extends JFrame {
 
 	private JPanel contentPane;
