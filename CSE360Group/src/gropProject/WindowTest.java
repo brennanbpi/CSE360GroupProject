@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.swing.JLabel;
 
 /**
+ * https://github.com/brennanbpi/CSE360GroupProject.git
  * Main window for the program, links to other features with buttons,
  * and keeps track by using the back end class
  * Majority built using Eclipse WindowBuilder plug in

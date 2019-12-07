@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- * 
+ * https://github.com/brennanbpi/CSE360GroupProject.git
  * @author Albert De La Cruz Matt Fleming Brennan Iannone Jacob Ybarra
  *
  */
