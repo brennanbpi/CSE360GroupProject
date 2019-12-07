@@ -1,13 +1,11 @@
 package gropProject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.io.bufferedWriter;
 
 public class backend
 {
@@ -17,12 +15,7 @@ public class backend
 	String errorlog;//a log of errors
 	ArrayList<Float> allgrades;
 	
-	//returns all grades added to display or use for graph
-	public ArrayList<Float> getgrades()
-	{
-		log = log + "Displaying grades\n";
-		return allgrades;
-	}
+	
 	
 	//Constructor that takes in a lower and upper 
 	public backend(int l, int h)
@@ -33,6 +26,32 @@ public class backend
 		errorlog = "";
 		allgrades = new ArrayList<Float>();
 	}
+	
+	//returns all grades added to display or use for graph
+		public ArrayList<Float> getgrades()
+		{
+			ArrayList<Float> unsorted = allgrades;
+			ArrayList<Float> sorted= new ArrayList<Float>();
+			float currmax;
+			int temploc;
+			for(int i =0; i <unsorted.size();i++)
+			{
+				currmax = unsorted.get(0);
+				temploc =0;
+				for(int j=0;j<unsorted.size();j++)
+				{
+					if(currmax<unsorted.get(j))
+					{
+						currmax = unsorted.get(j);
+						temploc =j;
+					}
+				}
+				sorted.add(currmax);
+				unsorted.remove(temploc);
+			}
+			log = log + "Displaying grades\n";
+			return sorted;
+		}
 	
 	//takes string filename to read in files from file
 	public void loadfile(String filename) throws IOException
@@ -61,10 +80,7 @@ public class backend
 			br.close();
 		}
 		else	//If there is no file, prints error
-		{
 			System.out.println("Error: File Not Found.");
-			errorlog = errorlog + "Error: " +  filename + " Not Found.\n";
-		}
 	}
 	
 	//adds value x to the arrayList
@@ -75,32 +91,25 @@ public class backend
 			allgrades.add(addThis);
 			log = log + addThis + " has been added to the data set\n";
 		}
-		else
-		{
-			errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
-			log = log + "Error: " + addThis + "is not within the bounds\n";
-		}
+		errorlog = errorlog + "Error: " + addThis + "is not within the bounds\n";
+		log = log + "Error: " + addThis + "is not within the bounds\n";
 	}
 	
 	//deletes first appearance of a value from allgrades
 	public void deleteValue(float delThis)
 	{
-		boolean foundValue = false;
+		
 		for(int trav=0; trav<=allgrades.size()-1; trav++)
 		{
 			if(allgrades.get(trav)==delThis)
 			{
-				foundValue = true;
 				allgrades.remove(trav);
-				log=log+delThis+" has been deleted from the data set\n";
+				log=log+delThis+" has been deleted from the data set";
 				break;
 			}
 		}
-		if(foundValue == false)//value not found
-		{
-			errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
-			log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
-		}
+		errorlog = errorlog + "Error: "+ delThis + " is not in data set and can not be deleted\n";
+		log = log + "Error: " + delThis + " is not in data set and can not be deleted\n";
 	}
 	
 	//reset the boundaries to given values
@@ -113,11 +122,8 @@ public class backend
 			log = log + "lower bounds has been set to " + l +"\n";
 			log = log +" upper bounds has been set to " + h +"\n";
 		}
-		else
-		{
-			errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
-			log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
-		}
+		errorlog = errorlog + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
+		log = log + "Error:" + l + " is greater than " + h + " , the boundaries will not be changed\n"; 
 	}
 	
 	//return number of entries in dataset
@@ -193,12 +199,12 @@ public class backend
 	}
 	
 	//returns log of events
-	public String getlog()
+	public string getlog()
 	{
 		return log;
 	}
 	//return log of errors
-	public String geterrors()
+	public string geterrors()
 	{
 		return errorlog;
 	}
@@ -224,23 +230,16 @@ public class backend
 	//creates report, requires filename 
 	public void createReport(String filename)
 	{
-		try {
-			BufferedWriter writer;
-		if(filename.contains(".txt"))//if filename does have .txt open file
+		if(filename.contains(.txt))//if filename does have .txt open file
 		{
-			writer = new BufferedWriter( new FileWriter(filename));
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename));
 		}	
 		else//else add .txt to filename then open it
 		{
-			writer = new BufferedWriter( new FileWriter(filename+".txt"));
+			BufferedWriter writer = new BufferedWriter( new FileWriter(filename+".txt"));
 		}
 		writer.write(log);
 		writer.close();
-		}
-		catch(IOException error)
-		{
-			
-		}
 	}
 	
 	
