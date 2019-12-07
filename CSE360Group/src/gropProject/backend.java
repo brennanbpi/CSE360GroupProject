@@ -28,7 +28,8 @@ public class backend
 				ArrayList<Float> sorted= new ArrayList<Float>();
 				float currmax;
 				int temploc;
-				for(int i =0; i <unsorted.size();i++)
+				int unsize= unsorted.size();
+				for(int i =0; i <unsize;i++)
 				{
 					currmax = unsorted.get(0);
 					temploc =0;
