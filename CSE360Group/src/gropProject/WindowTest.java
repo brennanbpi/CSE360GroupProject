@@ -207,7 +207,7 @@ public class WindowTest {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				DisplayData displayDataFrame = new DisplayData();
+				DisplayData displayDataFrame = new DisplayData(backend);
 				displayDataFrame.setVisible(true);
 				displayDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -220,16 +220,16 @@ public class WindowTest {
 		gbc_btnNewButton_6.gridx = 4;
 		gbc_btnNewButton_6.gridy = 9;
 		frame.getContentPane().add(displayGraphButton , gbc_btnNewButton_6);
-		/*displayGraphButton.addActionListener(new ActionListener()
+		displayGraphButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				DisplayData displayDataFrame = new DisplayData();
-				displayDataFrame.setVisible(true);
-				displayDataFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				displayGraph displayGraphFrame = new displayGraph();
+				displayGraphFrame.setVisible(true);
+				displayGraphFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		
-		}); need to finish graph window*/
+		}); 
 		
 		JButton errorsButton = new JButton("Errors");
 		GridBagConstraints gbc_btnNewButton_7 = new GridBagConstraints();
